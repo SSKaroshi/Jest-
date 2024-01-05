@@ -1,24 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import Banner from './components/Banner/Banner';
+import TodoPage from './pages/TodoPage/TodoPage';
+import FollowersPage from './pages/FollowersPage/FollowersPage';
+import PostListDataContainer from './components/PostList/PostList';
+import { useQuery, QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <QueryClientProvider client={queryClient}>
+        <Banner />
+        <Routes>
+          <Route path="/" element={<TodoPage />} />
+          <Route path="/followers" element={<FollowersPage />} />
+          <Route path="/list" element={<PostListDataContainer />} />
+        </Routes>
+      </QueryClientProvider>
     </div>
   );
 }
