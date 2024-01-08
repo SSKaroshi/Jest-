@@ -36,7 +36,7 @@ const AddInput: FC<AddInputProps> = ({ setTodos, todos }) => {
                 className="input"
                 value={todo}
                 onChange={(e) => setTodo(e.target.value)}
-                placeholder="Add a new Project here..."
+                placeholder="Add a new task here..."
             />
             <button
                 className="add-btn"
